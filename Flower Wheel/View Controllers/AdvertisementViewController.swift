@@ -71,8 +71,9 @@ class AdvertisementViewController: UIViewController{
             self.navigationController?.pushViewController(vc, animated: false)
         }
         
-        if idVC == "" {
-            
+        if idVC == "ShowcaseViewController" {
+            let vc = self.storyboard?.instantiateViewController(identifier: "ShowcaseViewController") as! ShowcaseViewController
+            self.navigationController?.pushViewController(vc, animated: false)
         }
     }
     @IBAction func agreementTapped(_ sender: Any) {

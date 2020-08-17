@@ -13,6 +13,7 @@ class AddImage: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        imageView.clipsToBounds = true
         // Initialization code
     }
 

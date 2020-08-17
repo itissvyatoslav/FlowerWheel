@@ -19,11 +19,11 @@
 		EB5E1EA624BD8C85008C77C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB5E1EA424BD8C85008C77C2 /* Main.storyboard */; };
 		EB5E1EA824BD8C8D008C77C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB5E1EA724BD8C8D008C77C2 /* Assets.xcassets */; };
 		EB5E1EAB24BD8C8D008C77C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB5E1EA924BD8C8D008C77C2 /* LaunchScreen.storyboard */; };
-		EB5E1EB924BDC8CE008C77C2 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB5E1EB824BDC8CE008C77C2 /* Roboto.ttf */; };
 		EB5E1EBC24BEDD2D008C77C2 /* ColorWheelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5E1EBB24BEDD2D008C77C2 /* ColorWheelViewController.swift */; };
 		EB5E1EC024C1C650008C77C2 /* AdvertisementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5E1EBF24C1C650008C77C2 /* AdvertisementViewController.swift */; };
 		EB5EDB3324C316A1000A4419 /* BouquetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EDB3224C316A1000A4419 /* BouquetsViewController.swift */; };
 		EB710E5724DBB2720061E7BC /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB710E5624DBB2720061E7BC /* InfoViewController.swift */; };
+		EB710E5924DFBEFA0061E7BC /* ShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB710E5824DFBEFA0061E7BC /* ShowcaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,11 +42,11 @@
 		EB5E1EAA24BD8C8D008C77C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB5E1EAC24BD8C8D008C77C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB5E1EB724BDC8B3008C77C2 /* Montserrat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Montserrat.ttf; sourceTree = "<group>"; };
-		EB5E1EB824BDC8CE008C77C2 /* Roboto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Roboto.ttf; path = ../../../../../Downloads/Roboto.ttf; sourceTree = "<group>"; };
 		EB5E1EBB24BEDD2D008C77C2 /* ColorWheelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelViewController.swift; sourceTree = "<group>"; };
 		EB5E1EBF24C1C650008C77C2 /* AdvertisementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementViewController.swift; sourceTree = "<group>"; };
 		EB5EDB3224C316A1000A4419 /* BouquetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouquetsViewController.swift; sourceTree = "<group>"; };
 		EB710E5624DBB2720061E7BC /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		EB710E5824DFBEFA0061E7BC /* ShowcaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +124,6 @@
 		EB5E1EB524BDC8A4008C77C2 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				EB5E1EB824BDC8CE008C77C2 /* Roboto.ttf */,
 				EB5E1EB724BDC8B3008C77C2 /* Montserrat.ttf */,
 			);
 			path = Fonts;
@@ -138,6 +137,7 @@
 				EB5E1EBF24C1C650008C77C2 /* AdvertisementViewController.swift */,
 				EB5EDB3224C316A1000A4419 /* BouquetsViewController.swift */,
 				EB710E5624DBB2720061E7BC /* InfoViewController.swift */,
+				EB710E5824DFBEFA0061E7BC /* ShowcaseViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -205,7 +205,6 @@
 				EB5E1EA824BD8C8D008C77C2 /* Assets.xcassets in Resources */,
 				EB50BBA624D8067C00739909 /* AddImage.xib in Resources */,
 				EB5E1EA624BD8C85008C77C2 /* Main.storyboard in Resources */,
-				EB5E1EB924BDC8CE008C77C2 /* Roboto.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +222,7 @@
 				EB5EDB3324C316A1000A4419 /* BouquetsViewController.swift in Sources */,
 				EB50BB9F24D530B500739909 /* Extensions.swift in Sources */,
 				EB50BB9C24D0346800739909 /* BackgroundCell.swift in Sources */,
+				EB710E5924DFBEFA0061E7BC /* ShowcaseViewController.swift in Sources */,
 				EB5E1E9F24BD8C85008C77C2 /* AppDelegate.swift in Sources */,
 				EB5E1EA124BD8C85008C77C2 /* SceneDelegate.swift in Sources */,
 				EB5E1EC024C1C650008C77C2 /* AdvertisementViewController.swift in Sources */,

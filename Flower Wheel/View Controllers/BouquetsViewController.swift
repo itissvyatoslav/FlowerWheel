@@ -14,7 +14,17 @@ class BouquetsViewController: UIViewController {
     
     let backgrounds = [UIImage(named: "background1"), UIImage(named: "background2"), UIImage(named: "background3"), UIImage(named: "background4"), UIImage(named: "background5"), UIImage(named: "background6"), UIImage(named: "background7"), UIImage(named: "background8"), UIImage(named: "background9"), UIImage(named: "background10")]
     
-    var flowers = [UIImage?]()
+    var flowers = [UIImage]()
+    var miniFlowers = [UIImage]()
+    
+    var packs = [UIImage]()
+    var miniPacks = [UIImage]()
+    
+    var green = [UIImage]()
+    var miniGreen = [UIImage]()
+    
+    var decor = [UIImage]()
+    var miniDecor = [UIImage]()
     
     var collection = [UIImage?]()
     
@@ -43,11 +53,33 @@ class BouquetsViewController: UIViewController {
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
+        setArrays()
+        collection = flowers
         collectionHeight.constant = 120
         super.viewDidLoad()
         setCollectionView()
         setButtons()
         setViews()
+    }
+    
+    private func setArrays(){
+        for number in 0..<47 {
+            flowers.append(UIImage(named: "flower\(number)")!)
+            miniFlowers.append(UIImage(named: "miniFlowers\(number)")!)
+        }
+        for number in 1..<12 {
+            packs.append(UIImage(named: "pack\(number)")!)
+            miniPacks.append(UIImage(named: "miniPack\(number)")!)
+        }
+        for number in 1..<24 {
+            green.append(UIImage(named: "green\(number)")!)
+            miniGreen.append(UIImage(named: "miniGreen\(number)")!)
+        }
+        
+        for number in 1..<32 {
+            decor.append(UIImage(named: "decor\(number)")!)
+            miniDecor.append(UIImage(named: "miniDecor\(number)")!)
+        }
     }
     
     private func setViews(){
@@ -64,13 +96,15 @@ class BouquetsViewController: UIViewController {
     private func setCollectionView(){
         backgroundCollectionView.delegate = self
         backgroundCollectionView.dataSource = self
+        addingPhotosCollectionView.delegate = self
+        addingPhotosCollectionView.dataSource = self
         let cellBackground = UINib(nibName: "BackgroundCell",
                                   bundle: nil)
         self.backgroundCollectionView.register(cellBackground,
                                                forCellWithReuseIdentifier: "BackgroundCell")
         let cellAdd = UINib(nibName: "AddImage",
                                   bundle: nil)
-        self.backgroundCollectionView.register(cellAdd,
+        self.addingPhotosCollectionView.register(cellAdd,
                                                forCellWithReuseIdentifier: "AddImage")
     }
     
@@ -100,10 +134,11 @@ class BouquetsViewController: UIViewController {
     }
     
     @IBAction func button0Tapped(_ sender: Any) {
-        collection = flowers
+        collection = miniFlowers
+        addingPhotosCollectionView.reloadData()
         setButtons()
         button0Tapped.isHidden = false
-        viewHeight.constant = self.view.frame.height * 0.3
+        viewHeight.constant = self.view.frame.height * 0.4
         collectionHeight.constant = viewHeight.constant
         isButton0Tapped = true
     }
@@ -116,9 +151,11 @@ class BouquetsViewController: UIViewController {
     
     
     @IBAction func button1Tapped(_ sender: Any) {
+        collection = miniGreen
+        addingPhotosCollectionView.reloadData()
         setButtons()
         button1Tapped.isHidden = false
-        viewHeight.constant = self.view.frame.height * 0.2
+        viewHeight.constant = self.view.frame.height * 0.3
     }
     
     @IBAction func button1DoubleTapped(_ sender: Any) {
@@ -128,6 +165,8 @@ class BouquetsViewController: UIViewController {
     }
     
     @IBAction func button2Tapped(_ sender: Any) {
+        collection = miniPacks
+        addingPhotosCollectionView.reloadData()
         setButtons()
         button2Tapped.isHidden = false
         viewHeight.constant = self.view.frame.height * 0.3
@@ -140,9 +179,11 @@ class BouquetsViewController: UIViewController {
     }
     
     @IBAction func button3Tapped(_ sender: Any) {
+        collection = miniDecor
+        addingPhotosCollectionView.reloadData()
         setButtons()
         button3Tapped.isHidden = false
-        viewHeight.constant = self.view.frame.height * 0.2
+        viewHeight.constant = self.view.frame.height * 0.4
     }
     
     @IBAction func button3DoubleTapped(_ sender: Any) {
@@ -154,13 +195,12 @@ class BouquetsViewController: UIViewController {
 
 // MARK:- EXTENSION
 
-extension BouquetsViewController: UICollectionViewDelegate,  UICollectionViewDataSource{
+extension BouquetsViewController: UICollectionViewDelegate,  UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == backgroundCollectionView {
             return backgrounds.count
         }
         if collectionView == addingPhotosCollectionView {
-            print("NUMBER \(collection.count)")
             return collection.count
         }
         return 1
@@ -191,6 +231,14 @@ extension BouquetsViewController: UICollectionViewDelegate,  UICollectionViewDat
             bigImage.image = UIImage(named: "background\(indexPath.item + 1)")
         } else {
             bigImage.image = UIImage(named: "bigBackground\(indexPath.item + 1)")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == self.addingPhotosCollectionView{
+            return CGSize(width: 90, height: 90)
+        } else {
+            return CGSize(width: 42, height: 42)
         }
     }
 }

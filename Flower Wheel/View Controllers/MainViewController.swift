@@ -65,8 +65,16 @@ class MainViewController: UIViewController {
         }
     }
     
+    @available(iOS 13.0, *)
     @IBAction func showcaseTapped(_ sender: Any) {
-        print("3")
+        if DataModel.sharedData.isPayed {
+            let vc = self.storyboard?.instantiateViewController(identifier: "ShowcaseViewController") as! ShowcaseViewController
+            self.navigationController?.pushViewController(vc, animated: false)
+        } else {
+            let vc = self.storyboard?.instantiateViewController(identifier: "AdvertisementViewController") as! AdvertisementViewController
+            vc.idVC = "ShowcaseViewController"
+            self.navigationController?.pushViewController(vc, animated: false)
+        }
     }
     
     @available(iOS 13.0, *)

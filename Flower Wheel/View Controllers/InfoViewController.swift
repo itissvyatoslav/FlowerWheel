@@ -10,6 +10,9 @@ import UIKit
 import SafariServices
 
 class InfoViewController: UIViewController{
+    
+    @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
+    
     //MARK:- OUTLETS MATCHES
     
     @IBOutlet weak var matchesLabel: UILabel!
@@ -97,6 +100,7 @@ class InfoViewController: UIViewController{
     }
     
     override func viewDidLoad() {
+        //scrollViewHeight.constant = 400
         super.viewDidLoad()
         setText()
         setFirstView()
