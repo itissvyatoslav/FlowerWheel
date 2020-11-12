@@ -11,7 +11,10 @@ import SafariServices
 
 class InfoViewController: UIViewController{
     
-    @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var scrollHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewHeight: NSLayoutConstraint!
+    
     
     //MARK:- OUTLETS MATCHES
     
@@ -100,7 +103,9 @@ class InfoViewController: UIViewController{
     }
     
     override func viewDidLoad() {
-        //scrollViewHeight.constant = 400
+        viewHeight.constant = 100//UIScreen.main.bounds.height + 100
+        scrollHeight.constant = UIScreen.main.bounds.height + 100
+        print(scrollHeight.constant)
         super.viewDidLoad()
         setText()
         setFirstView()
@@ -166,6 +171,8 @@ class InfoViewController: UIViewController{
         } else {
             matchesLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
             MatchesHeight.constant = 465
+            //scrollHeight.constant = scrollHeight.constant + 465
+            //viewHeight.constant = viewHeight.constant + 465
             MatchesPlus.text = "-"
             isMatchTapped = true
         }
@@ -179,6 +186,7 @@ class InfoViewController: UIViewController{
             ColorsPlus.text = "+"
             isColorsTapped = false
         } else {
+            
             colorsLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
             viewColors.isHidden = false
             ColorsHeight.constant = 1115

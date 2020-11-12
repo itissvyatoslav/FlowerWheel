@@ -294,7 +294,7 @@ class ColorWheelViewController: UIViewController{
     
     @available(iOS 13.0, *)
     @IBAction func bigButtonTapped(_ sender: Any) {
-        if DataModel.sharedData.isPayed {
+        if UserDefaults.standard.bool(forKey: "nonConsumablePurchaseMade") {
             if selectedIndexMask != 0 {
                 if isSelectedBigButton {
                     maskImage.image = UIImage(named: "Mask0\(selectedIndexMask)")

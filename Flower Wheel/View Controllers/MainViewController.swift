@@ -18,6 +18,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
+        let nonConsumablePurchaseMade = UserDefaults.standard.bool(forKey: "nonConsumablePurchaseMade")
+        print("NON CONSUMABLE PURCHASE MADE: \(nonConsumablePurchaseMade)")
     }
     
     private func setView(){
@@ -55,7 +57,7 @@ class MainViewController: UIViewController {
     
     @available(iOS 13.0, *)
     @IBAction func bouquetsTapped(_ sender: Any) {
-        if DataModel.sharedData.isPayed {
+        if !UserDefaults.standard.bool(forKey: "nonConsumablePurchaseMade") {
             let vc = self.storyboard?.instantiateViewController(identifier: "BouquetsViewController") as! BouquetsViewController
             self.navigationController?.pushViewController(vc, animated: false)
         } else {
@@ -67,7 +69,7 @@ class MainViewController: UIViewController {
     
     @available(iOS 13.0, *)
     @IBAction func showcaseTapped(_ sender: Any) {
-        if DataModel.sharedData.isPayed {
+        if !UserDefaults.standard.bool(forKey: "nonConsumablePurchaseMade") {
             let vc = self.storyboard?.instantiateViewController(identifier: "ShowcaseViewController") as! ShowcaseViewController
             self.navigationController?.pushViewController(vc, animated: false)
         } else {
@@ -79,8 +81,11 @@ class MainViewController: UIViewController {
     
     @available(iOS 13.0, *)
     @IBAction func infoTapped(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "InfoViewController") as! InfoViewController
-        self.navigationController?.pushViewController(vc, animated: false)
+        let vc = self.storyboard?.instantiateViewController(identifier: "NewInfoViewController") as! NewInfoViewController
+          self.navigationController?.pushViewController(vc, animated: false)
+        
+      //  let vc = self.storyboard?.instantiateViewController(identifier: "InfoViewController") as! //InfoViewController
+      //  self.navigationController?.pushViewController(vc, animated: false)
     }
     
     override var prefersStatusBarHidden: Bool {

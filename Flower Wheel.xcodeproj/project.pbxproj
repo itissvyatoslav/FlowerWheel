@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CCA19024C0007AA28DA3BDDA /* Pods_Flower_Wheel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36866A06913BE8BB3E5E54D /* Pods_Flower_Wheel.framework */; };
 		EB50BB9C24D0346800739909 /* BackgroundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB50BB9A24D0346800739909 /* BackgroundCell.swift */; };
 		EB50BB9D24D0346800739909 /* BackgroundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB50BB9B24D0346800739909 /* BackgroundCell.xib */; };
 		EB50BB9F24D530B500739909 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB50BB9E24D530B500739909 /* Extensions.swift */; };
@@ -22,11 +23,17 @@
 		EB5E1EBC24BEDD2D008C77C2 /* ColorWheelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5E1EBB24BEDD2D008C77C2 /* ColorWheelViewController.swift */; };
 		EB5E1EC024C1C650008C77C2 /* AdvertisementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5E1EBF24C1C650008C77C2 /* AdvertisementViewController.swift */; };
 		EB5EDB3324C316A1000A4419 /* BouquetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EDB3224C316A1000A4419 /* BouquetsViewController.swift */; };
+		EB617B04255BFB4400007009 /* NewInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB617B03255BFB4400007009 /* NewInfoViewController.swift */; };
+		EB617B06255BFD3900007009 /* InfoTappedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB617B05255BFD3900007009 /* InfoTappedViewController.swift */; };
 		EB710E5724DBB2720061E7BC /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB710E5624DBB2720061E7BC /* InfoViewController.swift */; };
 		EB710E5924DFBEFA0061E7BC /* ShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB710E5824DFBEFA0061E7BC /* ShowcaseViewController.swift */; };
+		EBB52E56254BAEAE00E41D2F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBB52E55254BAEAE00E41D2F /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25061C7EF0C412C3373CFB48 /* Pods-Flower Wheel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flower Wheel.release.xcconfig"; path = "Target Support Files/Pods-Flower Wheel/Pods-Flower Wheel.release.xcconfig"; sourceTree = "<group>"; };
+		79463AD946FFFF7CCC1D20DC /* Pods-Flower Wheel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flower Wheel.debug.xcconfig"; path = "Target Support Files/Pods-Flower Wheel/Pods-Flower Wheel.debug.xcconfig"; sourceTree = "<group>"; };
+		A36866A06913BE8BB3E5E54D /* Pods_Flower_Wheel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flower_Wheel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB50BB9A24D0346800739909 /* BackgroundCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCell.swift; sourceTree = "<group>"; };
 		EB50BB9B24D0346800739909 /* BackgroundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundCell.xib; sourceTree = "<group>"; };
 		EB50BB9E24D530B500739909 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -45,8 +52,11 @@
 		EB5E1EBB24BEDD2D008C77C2 /* ColorWheelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorWheelViewController.swift; sourceTree = "<group>"; };
 		EB5E1EBF24C1C650008C77C2 /* AdvertisementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementViewController.swift; sourceTree = "<group>"; };
 		EB5EDB3224C316A1000A4419 /* BouquetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouquetsViewController.swift; sourceTree = "<group>"; };
+		EB617B03255BFB4400007009 /* NewInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInfoViewController.swift; sourceTree = "<group>"; };
+		EB617B05255BFD3900007009 /* InfoTappedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTappedViewController.swift; sourceTree = "<group>"; };
 		EB710E5624DBB2720061E7BC /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		EB710E5824DFBEFA0061E7BC /* ShowcaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseViewController.swift; sourceTree = "<group>"; };
+		EBB52E55254BAEAE00E41D2F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +64,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCA19024C0007AA28DA3BDDA /* Pods_Flower_Wheel.framework in Frameworks */,
+				EBB52E56254BAEAE00E41D2F /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E0B9A698AD40428957177AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EBB52E55254BAEAE00E41D2F /* StoreKit.framework */,
+				A36866A06913BE8BB3E5E54D /* Pods_Flower_Wheel.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8CA5D6B79B19C205AF70321 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				79463AD946FFFF7CCC1D20DC /* Pods-Flower Wheel.debug.xcconfig */,
+				25061C7EF0C412C3373CFB48 /* Pods-Flower Wheel.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		EB50BB9924D0343D00739909 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +114,8 @@
 			children = (
 				EB5E1E9D24BD8C85008C77C2 /* Flower Wheel */,
 				EB5E1E9C24BD8C85008C77C2 /* Products */,
+				B8CA5D6B79B19C205AF70321 /* Pods */,
+				9E0B9A698AD40428957177AD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +170,8 @@
 				EB5EDB3224C316A1000A4419 /* BouquetsViewController.swift */,
 				EB710E5624DBB2720061E7BC /* InfoViewController.swift */,
 				EB710E5824DFBEFA0061E7BC /* ShowcaseViewController.swift */,
+				EB617B03255BFB4400007009 /* NewInfoViewController.swift */,
+				EB617B05255BFD3900007009 /* InfoTappedViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -149,9 +183,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB5E1EAF24BD8C8D008C77C2 /* Build configuration list for PBXNativeTarget "Flower Wheel" */;
 			buildPhases = (
+				350F924F051045236F0C3740 /* [CP] Check Pods Manifest.lock */,
 				EB5E1E9724BD8C85008C77C2 /* Sources */,
 				EB5E1E9824BD8C85008C77C2 /* Frameworks */,
 				EB5E1E9924BD8C85008C77C2 /* Resources */,
+				31D6551B08891F06C3FDF10B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -210,6 +246,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		31D6551B08891F06C3FDF10B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Flower Wheel/Pods-Flower Wheel-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Flower Wheel/Pods-Flower Wheel-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Flower Wheel/Pods-Flower Wheel-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		350F924F051045236F0C3740 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Flower Wheel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EB5E1E9724BD8C85008C77C2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -219,6 +297,8 @@
 				EB710E5724DBB2720061E7BC /* InfoViewController.swift in Sources */,
 				EB50BBA524D8067C00739909 /* AddImage.swift in Sources */,
 				EB5E1EA324BD8C85008C77C2 /* MainViewController.swift in Sources */,
+				EB617B06255BFD3900007009 /* InfoTappedViewController.swift in Sources */,
+				EB617B04255BFB4400007009 /* NewInfoViewController.swift in Sources */,
 				EB5EDB3324C316A1000A4419 /* BouquetsViewController.swift in Sources */,
 				EB50BB9F24D530B500739909 /* Extensions.swift in Sources */,
 				EB50BB9C24D0346800739909 /* BackgroundCell.swift in Sources */,
@@ -368,18 +448,23 @@
 		};
 		EB5E1EB024BD8C8D008C77C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79463AD946FFFF7CCC1D20DC /* Pods-Flower Wheel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NA6VF3HCZ5;
+				CURRENT_PROJECT_VERSION = 0;
+				DEVELOPMENT_TEAM = BZVLQJFA2K;
 				INFOPLIST_FILE = "Flower Wheel/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ss.Flower-Wheel";
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = flowerwheel.softweather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -387,18 +472,23 @@
 		};
 		EB5E1EB124BD8C8D008C77C2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25061C7EF0C412C3373CFB48 /* Pods-Flower Wheel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NA6VF3HCZ5;
+				CURRENT_PROJECT_VERSION = 0;
+				DEVELOPMENT_TEAM = BZVLQJFA2K;
 				INFOPLIST_FILE = "Flower Wheel/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ss.Flower-Wheel";
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = flowerwheel.softweather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

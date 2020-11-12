@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import StickerView
 
-class BouquetsViewController: UIViewController {
+class BouquetsViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     var isPayed = false
     
@@ -27,10 +28,12 @@ class BouquetsViewController: UIViewController {
     var miniDecor = [UIImage]()
     
     var collection = [UIImage?]()
+    var bigCollection = [UIImage]()
     
     @IBOutlet weak var bigImage: UIImageView!
     @IBOutlet weak var backgroundCollectionView: UICollectionView!
     @IBOutlet weak var addingPhotosView: UIView!
+    @IBOutlet weak var imagesView: UIView!
     
     @IBOutlet weak var button0: UIButton!
     @IBOutlet weak var button1: UIButton!
@@ -42,7 +45,10 @@ class BouquetsViewController: UIViewController {
     @IBOutlet weak var button2Tapped: UIButton!
     @IBOutlet weak var button3Tapped: UIButton!
     
+    @IBOutlet weak var addStickerButton: UIButton!
+    
     @IBOutlet weak var addingPhotosCollectionView: UICollectionView!
+    var isSendingToStickers = false
     
     var isButton0Tapped = false
     var isButton1Tapped = false
@@ -61,6 +67,16 @@ class BouquetsViewController: UIViewController {
         setButtons()
         setViews()
     }
+    
+    @IBAction func addStickerTapped(_ sender: Any) {
+        isSendingToStickers = true
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
     
     private func setArrays(){
         for number in 0..<47 {
@@ -83,7 +99,10 @@ class BouquetsViewController: UIViewController {
     }
     
     private func setViews(){
+        addStickerButton.layer.cornerRadius = 15
         viewHeight.constant = 0
+        labelFilter.text = "ОРИГИНАЛ"
+        imageFilter.image = UIImage(named: "filter2")
     }
     
     private func setButtons(){
@@ -117,11 +136,49 @@ class BouquetsViewController: UIViewController {
     }
     
     @IBAction func saveTapped(_ sender: Any) {
-        print("save")
+        selectedStickerView = nil
+        _selectedStickerView = nil
+        let image = createImage(from: imagesView)
+        let imageData = image.pngData()!
+        let compressedImage = UIImage(data: imageData)
+        UIImageWriteToSavedPhotosAlbum(compressedImage!, nil, nil, nil)
+    }
+    
+    func createImage(from aView:UIView) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: aView.frame.width, height: aView.frame.height), true, 0)
+        aView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
     }
     
     @IBAction func addBackgroundTapped(_ sender: Any) {
-        print("addBackGround")
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if isSendingToStickers {
+            //if let selectedImage = info[.originalImage] as? UIImage {
+            //    self.initialize(image: selectedImage)
+            //}
+            if let selectedImage = info[.editedImage] as? UIImage {
+                self.initialize(image: selectedImage)
+            }
+        } else {
+            if let selectedImage = info[.originalImage] as? UIImage {
+                bigImage.image = selectedImage
+            }
+            if let selectedImage = info[.editedImage] as? UIImage {
+                bigImage.image = selectedImage
+            }
+        }
+        isSendingToStickers = false
+        
+        dismiss(animated: true, completion: nil)
     }
     
     //MARK:- BUTTONS BOTTOM
@@ -134,6 +191,7 @@ class BouquetsViewController: UIViewController {
     }
     
     @IBAction func button0Tapped(_ sender: Any) {
+        bigCollection = flowers
         collection = miniFlowers
         addingPhotosCollectionView.reloadData()
         setButtons()
@@ -151,6 +209,7 @@ class BouquetsViewController: UIViewController {
     
     
     @IBAction func button1Tapped(_ sender: Any) {
+        bigCollection = green
         collection = miniGreen
         addingPhotosCollectionView.reloadData()
         setButtons()
@@ -165,6 +224,7 @@ class BouquetsViewController: UIViewController {
     }
     
     @IBAction func button2Tapped(_ sender: Any) {
+        bigCollection = packs
         collection = miniPacks
         addingPhotosCollectionView.reloadData()
         setButtons()
@@ -179,6 +239,7 @@ class BouquetsViewController: UIViewController {
     }
     
     @IBAction func button3Tapped(_ sender: Any) {
+        bigCollection = decor
         collection = miniDecor
         addingPhotosCollectionView.reloadData()
         setButtons()
@@ -190,6 +251,96 @@ class BouquetsViewController: UIViewController {
         viewHeight.constant = 0
         setButtons()
         isButton3Tapped = false
+    }
+    
+    //MARK:- STICKER
+    
+    private var _selectedStickerView:StickerView?
+    var selectedStickerView:StickerView? {
+        get {
+            return _selectedStickerView
+        }
+        set {
+            // if other sticker choosed then resign the handler
+            if _selectedStickerView != newValue {
+                if let selectedStickerView = _selectedStickerView {
+                    selectedStickerView.showEditingHandlers = false
+                }
+                _selectedStickerView = newValue
+            }
+            // assign handler to new sticker added
+            if let selectedStickerView = _selectedStickerView {
+                selectedStickerView.showEditingHandlers = true
+                selectedStickerView.superview?.bringSubviewToFront(selectedStickerView)
+            }
+        }
+    }
+    
+    func initialize(image: UIImage){
+        let testImage = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: image.size.width/8, height: image.size.height/8))
+        if isOriginal {
+            testImage.image = image
+        } else {
+            testImage.image = convertToGrayScale(image: image)
+        }
+        
+        let stickerView3 = StickerView.init(contentView: testImage)
+        stickerView3.center = CGPoint.init(x: self.view.bounds.width / 2, y: self.view.bounds.height / 4)
+        stickerView3.delegate = self
+        stickerView3.setImage(UIImage.init(named: "Close")!, forHandler: StickerViewHandler.close)
+        stickerView3.setImage(UIImage.init(named: "Rotate")!, forHandler: StickerViewHandler.rotate)
+        stickerView3.setImage(UIImage.init(named: "Flip")!, forHandler: StickerViewHandler.flip)
+        stickerView3.showEditingHandlers = false
+        
+        self.imagesView.addSubview(stickerView3)
+        
+        // first off assign handler to stickerView
+        self.selectedStickerView = stickerView3
+    }
+    
+    @IBAction func tap(_ sender:UITapGestureRecognizer) {
+        self.selectedStickerView?.showEditingHandlers = false
+    }
+    
+    //MARK:- BLACK AND WHITE <-> ORIGINAL
+    var isOriginal = true
+    var isBigOriginal = true
+    
+    @IBAction func changeFilter(_ sender: Any) {
+        isOriginal = !isOriginal
+        if isOriginal {
+            imageFilter.image = UIImage(named: "filter2")
+            labelFilter.text = "ОРИГИНАЛ"
+        } else {
+            imageFilter.image = UIImage(named: "filter")
+            labelFilter.text = "Ч/Б"
+            if let image = bigImage.image {
+                if isBigOriginal {
+                    bigImage.image = convertToGrayScale(image: image)
+                    isBigOriginal = false
+                }
+            }
+        }
+        
+    }
+    
+    @IBOutlet weak var labelFilter: UILabel!
+    @IBOutlet weak var imageFilter: UIImageView!
+    
+    
+    private func convertToGrayScale(image: UIImage) -> UIImage? {
+
+        // Create image rectangle with current image width/height
+       let context = CIContext(options: nil)
+        if let filter = CIFilter(name: "CIPhotoEffectNoir") {
+            filter.setValue(CIImage(image: image), forKey: kCIInputImageKey)
+            if let output = filter.outputImage {
+                if let cgImage = context.createCGImage(output, from: output.extent) {
+                    return UIImage(cgImage: cgImage)
+                }
+            }
+        }
+        return nil
     }
 }
 
@@ -225,12 +376,21 @@ extension BouquetsViewController: UICollectionViewDelegate,  UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item == 3 {
-            bigImage.image =  nil
-        } else if indexPath.item < 8 {
-            bigImage.image = UIImage(named: "background\(indexPath.item + 1)")
-        } else {
-            bigImage.image = UIImage(named: "bigBackground\(indexPath.item + 1)")
+        if collectionView == backgroundCollectionView {
+            if indexPath.item == 3 {
+                bigImage.image =  nil
+            } else if indexPath.item < 8 {
+                bigImage.image = UIImage(named: "background\(indexPath.item + 1)")
+            } else {
+                bigImage.image = UIImage(named: "bigBackground\(indexPath.item + 1)")
+            }
+            imageFilter.image = UIImage(named: "filter2")
+            labelFilter.text = "ОРИГИНАЛ"
+            isOriginal = true
+            isBigOriginal = true
+        }
+        if collectionView == addingPhotosCollectionView {
+            self.initialize(image: bigCollection[indexPath.row])
         }
     }
     
@@ -240,5 +400,40 @@ extension BouquetsViewController: UICollectionViewDelegate,  UICollectionViewDat
         } else {
             return CGSize(width: 42, height: 42)
         }
+    }
+}
+
+extension BouquetsViewController: StickerViewDelegate{
+    func stickerViewDidTap(_ stickerView: StickerView) {
+        self.selectedStickerView = stickerView
+    }
+    
+    func stickerViewDidBeginMoving(_ stickerView: StickerView) {
+        self.selectedStickerView = stickerView
+    }
+    
+    /// Other delegate methods which we not used currently but choose method according to your event and requirements.
+    func stickerViewDidChangeMoving(_ stickerView: StickerView) {
+        
+    }
+    
+    func stickerViewDidEndMoving(_ stickerView: StickerView) {
+        
+    }
+    
+    func stickerViewDidBeginRotating(_ stickerView: StickerView) {
+        
+    }
+    
+    func stickerViewDidChangeRotating(_ stickerView: StickerView) {
+        
+    }
+    
+    func stickerViewDidEndRotating(_ stickerView: StickerView) {
+        
+    }
+    
+    func stickerViewDidClose(_ stickerView: StickerView) {
+        
     }
 }

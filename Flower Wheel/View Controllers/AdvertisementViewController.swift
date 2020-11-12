@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class AdvertisementViewController: UIViewController{
     
@@ -16,8 +17,25 @@ class AdvertisementViewController: UIViewController{
     @IBOutlet weak var payLabel: UILabel!
     @IBOutlet weak var payButton: UIButton!
     @IBOutlet weak var payButtonView: UIView!
+    @IBOutlet weak var restoreLabel: UILabel!
+    
     
     var idVC = "default  id" // Для перехода на нужный VC
+    
+    //MARK:- IAP
+    
+    var myProduct: SKProduct?
+    
+    func fetchProduct(){
+        let request = SKProductsRequest(productIdentifiers: [subscribe_id])
+        request.delegate = self
+        request.start()
+    }
+    
+    let subscribe_id = "flowerwheel.softweather"
+
+    var nonConsumablePurchaseMade = UserDefaults.standard.bool(forKey: "nonConsumablePurchaseMade")
+    
     
     let gradientLayer = CAGradientLayer()
     
@@ -30,10 +48,12 @@ class AdvertisementViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
+        fetchProduct()
     }
     
     private func setView(){
         setButton()
+        restoreLabel.text = "Восстановить\nпокупки"
         cornerView.layer.cornerRadius = 16
         nameLabel.text = "Flower Wheel"
         descrLabel.text = "Доступ ко всем платным переходам, эффектам, стикерам."
@@ -58,8 +78,32 @@ class AdvertisementViewController: UIViewController{
     
     @available(iOS 13.0, *)
     @IBAction func payTapped(_ sender: Any) {
-        DataModel.sharedData.isPayed = true
+        guard let myProduct = myProduct else {
+            return
+        }
+        
+        if SKPaymentQueue.canMakePayments() {
+            let payment = SKPayment(product: myProduct)
+            SKPaymentQueue.default().add(self)
+            SKPaymentQueue.default().add(payment)
+        }
+        
+        //DataModel.sharedData.isPayed = true
         DataModel.sharedData.cameFromPay = true
+        //purchaseMyProduct()
+    }
+    
+    @IBAction func agreementTapped(_ sender: Any) {
+        print("agreement")
+    }
+    
+    @IBAction func restoreTapped(_ sender: Any) {
+        SKPaymentQueue.default().restoreCompletedTransactions()
+    }
+    
+    
+    @available(iOS 13.0, *)
+    func goNextVC(){
         if idVC == "BouquetsViewController" {
             let vc = self.storyboard?.instantiateViewController(identifier: "BouquetsViewController") as! BouquetsViewController
             self.navigationController?.pushViewController(vc, animated: false)
@@ -76,7 +120,51 @@ class AdvertisementViewController: UIViewController{
             self.navigationController?.pushViewController(vc, animated: false)
         }
     }
-    @IBAction func agreementTapped(_ sender: Any) {
-        print("agreement")
+}
+
+extension AdvertisementViewController: SKProductsRequestDelegate, SKPaymentTransactionObserver {
+    
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        if let product = response.products.first {
+            myProduct = product
+            print(product.productIdentifier)
+            print(product.price)
+            print(product.localizedTitle)
+            print(product.localizedDescription)
+        }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        
+        for transaction in transactions {
+            switch transaction.transactionState {
+            case .purchasing:
+                break
+            case .purchased, .restored:
+                nonConsumablePurchaseMade = true
+                UserDefaults.standard.set(nonConsumablePurchaseMade, forKey: "nonConsumablePurchaseMade")
+                SKPaymentQueue.default().finishTransaction(transaction)
+                SKPaymentQueue.default().remove(self)
+                if #available(iOS 13.0, *) {
+                    goNextVC()
+                }
+                break
+            case .failed:
+                SKPaymentQueue.default().finishTransaction(transaction)
+                SKPaymentQueue.default().remove(self)
+                break
+            default:
+                break
+            }
+        }
+        
+        
+        
+    }
+    
+    func canMakePurchases() -> Bool {  return SKPaymentQueue.canMakePayments()  }
+    
+    func purchaseMyProduct(product: SKProduct) {
+        
     }
 }
