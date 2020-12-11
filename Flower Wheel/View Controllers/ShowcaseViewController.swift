@@ -111,6 +111,7 @@ class ShowcaseViewController: UIViewController, UIImagePickerControllerDelegate 
     }
     
     @IBAction func addTapped(_ sender: Any) {
+        bigImage.contentMode = .scaleAspectFit
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
@@ -330,6 +331,7 @@ extension ShowcaseViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == backgroundCollectionView {
+            bigImage.contentMode = .scaleToFill
             if indexPath.item == 3 {
                 bigImage.image =  nil
             } else if indexPath.item < 8 {

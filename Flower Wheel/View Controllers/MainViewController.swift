@@ -20,9 +20,17 @@ class MainViewController: UIViewController {
         setView()
         let nonConsumablePurchaseMade = UserDefaults.standard.bool(forKey: "nonConsumablePurchaseMade")
         print("NON CONSUMABLE PURCHASE MADE: \(nonConsumablePurchaseMade)")
+        let isNotFirstEnter = UserDefaults.standard.bool(forKey: "firstEnter")
+        if !isNotFirstEnter {
+            presentFirstEnter()
+        }
     }
     
+    
     private func setView(){
+        firstBackView.isHidden = true
+        firstAnimateView.isHidden = true
+        firstSupportView.isHidden = true
         ColorWheel.layer.cornerRadius = 20
         Bouquets.layer.cornerRadius = 20
         Showcase.layer.cornerRadius = 20
@@ -57,7 +65,7 @@ class MainViewController: UIViewController {
     
     @available(iOS 13.0, *)
     @IBAction func bouquetsTapped(_ sender: Any) {
-        if !UserDefaults.standard.bool(forKey: "nonConsumablePurchaseMade") {
+        if UserDefaults.standard.bool(forKey: "nonConsumablePurchaseMade") {
             let vc = self.storyboard?.instantiateViewController(identifier: "BouquetsViewController") as! BouquetsViewController
             self.navigationController?.pushViewController(vc, animated: false)
         } else {
@@ -69,7 +77,7 @@ class MainViewController: UIViewController {
     
     @available(iOS 13.0, *)
     @IBAction func showcaseTapped(_ sender: Any) {
-        if !UserDefaults.standard.bool(forKey: "nonConsumablePurchaseMade") {
+        if UserDefaults.standard.bool(forKey: "nonConsumablePurchaseMade") {
             let vc = self.storyboard?.instantiateViewController(identifier: "ShowcaseViewController") as! ShowcaseViewController
             self.navigationController?.pushViewController(vc, animated: false)
         } else {
@@ -82,14 +90,54 @@ class MainViewController: UIViewController {
     @available(iOS 13.0, *)
     @IBAction func infoTapped(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(identifier: "NewInfoViewController") as! NewInfoViewController
+        vc.delegate = self
           self.navigationController?.pushViewController(vc, animated: false)
         
-      //  let vc = self.storyboard?.instantiateViewController(identifier: "InfoViewController") as! //InfoViewController
-      //  self.navigationController?.pushViewController(vc, animated: false)
+        //let vc = self.storyboard?.instantiateViewController(identifier: "InfoViewController") as! InfoViewController
+        //self.navigationController?.pushViewController(vc, animated: false)
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    
+    //MARK:- FIRST ENTER
+    
+    @IBOutlet weak var firstBackView: UIView!
+    @IBOutlet weak var firstAnimateView: UIView!
+    @IBOutlet weak var firstSupportView: UIView!
+    
+    @IBOutlet weak var topAnimate: NSLayoutConstraint!
+    @IBOutlet weak var leftAnimate: NSLayoutConstraint!
+    @IBOutlet weak var bottomAnimate: NSLayoutConstraint!
+    @IBOutlet weak var rightAnimate: NSLayoutConstraint!
+    
+    
+    func presentFirstEnter(){
+        firstAnimateView.alpha = 0
+        firstBackView.isHidden = false
+        firstAnimateView.isHidden = false
+        firstSupportView.isHidden = false
+        firstAnimateView.layer.cornerRadius = 20
+        UIView.animate(withDuration: 3) {
+            self.firstAnimateView.alpha = 1
+        }
+        UIView.animate(withDuration: 15) {
+            self.topAnimate.constant += 20
+            self.leftAnimate.constant += 20
+            self.bottomAnimate.constant -= 20
+            self.rightAnimate.constant -= 20
+        }
+        UserDefaults.standard.set(true, forKey: "firstEnter")
+    }
+}
+
+extension MainViewController: BackFromInfoDelegate {
+    func hideFirstEnter() {
+        firstBackView.isHidden = true
+        firstAnimateView.isHidden = true
+        firstSupportView.isHidden = true
     }
 }
 

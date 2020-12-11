@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		105EF87B2578AD9B00980CF8 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105EF87A2578AD9B00980CF8 /* AgreementViewController.swift */; };
+		10EB2873255EE32000E52AFC /* MainInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB2871255EE32000E52AFC /* MainInfoCell.swift */; };
+		10EB2874255EE32000E52AFC /* MainInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10EB2872255EE32000E52AFC /* MainInfoCell.xib */; };
+		10EB28792561604800E52AFC /* FirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB28772561604800E52AFC /* FirstCell.swift */; };
+		10EB287A2561604800E52AFC /* FirstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10EB28782561604800E52AFC /* FirstCell.xib */; };
 		CCA19024C0007AA28DA3BDDA /* Pods_Flower_Wheel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36866A06913BE8BB3E5E54D /* Pods_Flower_Wheel.framework */; };
 		EB50BB9C24D0346800739909 /* BackgroundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB50BB9A24D0346800739909 /* BackgroundCell.swift */; };
 		EB50BB9D24D0346800739909 /* BackgroundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB50BB9B24D0346800739909 /* BackgroundCell.xib */; };
@@ -24,13 +29,18 @@
 		EB5E1EC024C1C650008C77C2 /* AdvertisementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5E1EBF24C1C650008C77C2 /* AdvertisementViewController.swift */; };
 		EB5EDB3324C316A1000A4419 /* BouquetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EDB3224C316A1000A4419 /* BouquetsViewController.swift */; };
 		EB617B04255BFB4400007009 /* NewInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB617B03255BFB4400007009 /* NewInfoViewController.swift */; };
-		EB617B06255BFD3900007009 /* InfoTappedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB617B05255BFD3900007009 /* InfoTappedViewController.swift */; };
 		EB710E5724DBB2720061E7BC /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB710E5624DBB2720061E7BC /* InfoViewController.swift */; };
 		EB710E5924DFBEFA0061E7BC /* ShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB710E5824DFBEFA0061E7BC /* ShowcaseViewController.swift */; };
 		EBB52E56254BAEAE00E41D2F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBB52E55254BAEAE00E41D2F /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		105EF87A2578AD9B00980CF8 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
+		10EB2871255EE32000E52AFC /* MainInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInfoCell.swift; sourceTree = "<group>"; };
+		10EB2872255EE32000E52AFC /* MainInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainInfoCell.xib; sourceTree = "<group>"; };
+		10EB28772561604800E52AFC /* FirstCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCell.swift; sourceTree = "<group>"; };
+		10EB28782561604800E52AFC /* FirstCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstCell.xib; sourceTree = "<group>"; };
+		10F14BA6257B8825002E3268 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		25061C7EF0C412C3373CFB48 /* Pods-Flower Wheel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flower Wheel.release.xcconfig"; path = "Target Support Files/Pods-Flower Wheel/Pods-Flower Wheel.release.xcconfig"; sourceTree = "<group>"; };
 		79463AD946FFFF7CCC1D20DC /* Pods-Flower Wheel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flower Wheel.debug.xcconfig"; path = "Target Support Files/Pods-Flower Wheel/Pods-Flower Wheel.debug.xcconfig"; sourceTree = "<group>"; };
 		A36866A06913BE8BB3E5E54D /* Pods_Flower_Wheel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flower_Wheel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,7 +63,6 @@
 		EB5E1EBF24C1C650008C77C2 /* AdvertisementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementViewController.swift; sourceTree = "<group>"; };
 		EB5EDB3224C316A1000A4419 /* BouquetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouquetsViewController.swift; sourceTree = "<group>"; };
 		EB617B03255BFB4400007009 /* NewInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewInfoViewController.swift; sourceTree = "<group>"; };
-		EB617B05255BFD3900007009 /* InfoTappedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTappedViewController.swift; sourceTree = "<group>"; };
 		EB710E5624DBB2720061E7BC /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		EB710E5824DFBEFA0061E7BC /* ShowcaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseViewController.swift; sourceTree = "<group>"; };
 		EBB52E55254BAEAE00E41D2F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -72,6 +81,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10EB2870255EE2DA00E52AFC /* InfoCells */ = {
+			isa = PBXGroup;
+			children = (
+				10EB2871255EE32000E52AFC /* MainInfoCell.swift */,
+				10EB2872255EE32000E52AFC /* MainInfoCell.xib */,
+				10EB28772561604800E52AFC /* FirstCell.swift */,
+				10EB28782561604800E52AFC /* FirstCell.xib */,
+			);
+			path = InfoCells;
+			sourceTree = "<group>";
+		};
 		9E0B9A698AD40428957177AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +150,7 @@
 		EB5E1E9D24BD8C85008C77C2 /* Flower Wheel */ = {
 			isa = PBXGroup;
 			children = (
+				10EB2870255EE2DA00E52AFC /* InfoCells */,
 				EB50BBA024D54E9500739909 /* Model */,
 				EB50BB9924D0343D00739909 /* Cells */,
 				EB5E1EBA24BEDCF4008C77C2 /* View Controllers */,
@@ -149,6 +170,7 @@
 			children = (
 				EB5E1EB524BDC8A4008C77C2 /* Fonts */,
 				EB50BB9E24D530B500739909 /* Extensions.swift */,
+				10F14BA6257B8825002E3268 /* Configuration.storekit */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -171,7 +193,7 @@
 				EB710E5624DBB2720061E7BC /* InfoViewController.swift */,
 				EB710E5824DFBEFA0061E7BC /* ShowcaseViewController.swift */,
 				EB617B03255BFB4400007009 /* NewInfoViewController.swift */,
-				EB617B05255BFD3900007009 /* InfoTappedViewController.swift */,
+				105EF87A2578AD9B00980CF8 /* AgreementViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -237,9 +259,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB50BB9D24D0346800739909 /* BackgroundCell.xib in Resources */,
+				10EB287A2561604800E52AFC /* FirstCell.xib in Resources */,
 				EB5E1EAB24BD8C8D008C77C2 /* LaunchScreen.storyboard in Resources */,
 				EB5E1EA824BD8C8D008C77C2 /* Assets.xcassets in Resources */,
 				EB50BBA624D8067C00739909 /* AddImage.xib in Resources */,
+				10EB2874255EE32000E52AFC /* MainInfoCell.xib in Resources */,
 				EB5E1EA624BD8C85008C77C2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,9 +319,9 @@
 			files = (
 				EB5E1EBC24BEDD2D008C77C2 /* ColorWheelViewController.swift in Sources */,
 				EB710E5724DBB2720061E7BC /* InfoViewController.swift in Sources */,
+				10EB2873255EE32000E52AFC /* MainInfoCell.swift in Sources */,
 				EB50BBA524D8067C00739909 /* AddImage.swift in Sources */,
 				EB5E1EA324BD8C85008C77C2 /* MainViewController.swift in Sources */,
-				EB617B06255BFD3900007009 /* InfoTappedViewController.swift in Sources */,
 				EB617B04255BFB4400007009 /* NewInfoViewController.swift in Sources */,
 				EB5EDB3324C316A1000A4419 /* BouquetsViewController.swift in Sources */,
 				EB50BB9F24D530B500739909 /* Extensions.swift in Sources */,
@@ -307,6 +331,8 @@
 				EB5E1EA124BD8C85008C77C2 /* SceneDelegate.swift in Sources */,
 				EB5E1EC024C1C650008C77C2 /* AdvertisementViewController.swift in Sources */,
 				EB50BBA224D54EB500739909 /* DataModel.swift in Sources */,
+				10EB28792561604800E52AFC /* FirstCell.swift in Sources */,
+				105EF87B2578AD9B00980CF8 /* AgreementViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,7 +487,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = flowerwheel.softweather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -485,7 +511,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = flowerwheel.softweather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

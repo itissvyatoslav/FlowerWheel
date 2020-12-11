@@ -153,6 +153,7 @@ class BouquetsViewController: UIViewController, UIImagePickerControllerDelegate 
     }
     
     @IBAction func addBackgroundTapped(_ sender: Any) {
+        bigImage.contentMode = .scaleAspectFit
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
@@ -316,6 +317,11 @@ class BouquetsViewController: UIViewController, UIImagePickerControllerDelegate 
             labelFilter.text = "Ч/Б"
             if let image = bigImage.image {
                 if isBigOriginal {
+                    for view in self.imagesView.subviews {
+                        if view is StickerView {
+                            
+                        }
+                    }
                     bigImage.image = convertToGrayScale(image: image)
                     isBigOriginal = false
                 }
@@ -377,6 +383,7 @@ extension BouquetsViewController: UICollectionViewDelegate,  UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == backgroundCollectionView {
+            bigImage.contentMode = .scaleToFill
             if indexPath.item == 3 {
                 bigImage.image =  nil
             } else if indexPath.item < 8 {

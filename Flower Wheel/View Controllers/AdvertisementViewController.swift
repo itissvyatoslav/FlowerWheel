@@ -27,12 +27,17 @@ class AdvertisementViewController: UIViewController{
     var myProduct: SKProduct?
     
     func fetchProduct(){
-        let request = SKProductsRequest(productIdentifiers: [subscribe_id])
+        let request = SKProductsRequest(productIdentifiers: Set(Product.allCases.compactMap({$0.rawValue})))
         request.delegate = self
         request.start()
     }
     
-    let subscribe_id = "flowerwheel.softweather"
+    enum Product: String, CaseIterable {
+        case buy = "flowerwheel.softweather"
+        case subscribe = "flowerwheel.year.softweather"
+    }
+    
+    let subscribe_id = "flowerwheel.year.softweather"
 
     var nonConsumablePurchaseMade = UserDefaults.standard.bool(forKey: "nonConsumablePurchaseMade")
     
@@ -78,12 +83,13 @@ class AdvertisementViewController: UIViewController{
     
     @available(iOS 13.0, *)
     @IBAction func payTapped(_ sender: Any) {
-        guard let myProduct = myProduct else {
-            return
-        }
+        print("key key")
+       // guard let myProduct = myProduct else {
+//            return
+   //     }
         
         if SKPaymentQueue.canMakePayments() {
-            let payment = SKPayment(product: myProduct)
+            let payment = SKPayment(product: model[1])
             SKPaymentQueue.default().add(self)
             SKPaymentQueue.default().add(payment)
         }
@@ -93,12 +99,16 @@ class AdvertisementViewController: UIViewController{
         //purchaseMyProduct()
     }
     
+    @available(iOS 13.0, *)
     @IBAction func agreementTapped(_ sender: Any) {
-        print("agreement")
+        let vc = self.storyboard?.instantiateViewController(identifier: "AgreementViewController") as! AgreementViewController
+        self.navigationController?.pushViewController(vc, animated: false)
     }
     
     @IBAction func restoreTapped(_ sender: Any) {
-        SKPaymentQueue.default().restoreCompletedTransactions()
+        if (SKPaymentQueue.canMakePayments()) {
+          SKPaymentQueue.default().restoreCompletedTransactions()
+        }
     }
     
     
@@ -120,18 +130,15 @@ class AdvertisementViewController: UIViewController{
             self.navigationController?.pushViewController(vc, animated: false)
         }
     }
+    
+    var model = [SKProduct]()
 }
 
 extension AdvertisementViewController: SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        if let product = response.products.first {
-            myProduct = product
-            print(product.productIdentifier)
-            print(product.price)
-            print(product.localizedTitle)
-            print(product.localizedDescription)
-        }
+        print(response.products)
+        self.model = response.products
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
@@ -150,6 +157,7 @@ extension AdvertisementViewController: SKProductsRequestDelegate, SKPaymentTrans
                 }
                 break
             case .failed:
+                print("fail")
                 SKPaymentQueue.default().finishTransaction(transaction)
                 SKPaymentQueue.default().remove(self)
                 break
